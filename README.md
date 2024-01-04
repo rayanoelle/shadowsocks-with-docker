@@ -12,23 +12,24 @@
 <br /><strong> `copy config.json /etc/shadowsocks-rust`</strong>
 
 5. Open the generated port on firewall: 
-<br /> <strong>`sudo ufw allow 65237/tcp` <br /> `sudo ufw allow 65237/udp`</strong>
+<br /> <strong>`sudo ufw allow <port number>/tcp` <br /> `sudo ufw allow <port number>/udp`</strong>
 
 6. Execute the docker-compose file:
 <br /> <strong>`docker-compose up -d`</strong>
 you can can also use the command bellow the command bellow:
 <br /> <strong>`docker run -d -p <port number>:<port number> -p <port number>:<port number>/udp --name ss-rust --restart=always -v /etc/shadowsocks-rust:/etc/shadowsocks-rust teddysun/shadowsocks-rust`</strong>
+<br />
 <strong>`the following steps are optional and you can use the vpn only one foreign server shadowsocks client like shadowsocks-electron`</strong>
 8. Now ssh into iran server and from there ssh into your foreign server one time in other to add its fingerprint into known host file.
 
 9. Edit the <strong><code>tunnel.sh</code></strong> file and replace these properties correctly:<br />
 
-   - `<iran server port>` with generated port, in our case it was <strong>`65237`</strong> (Iran server port could be different but for simplicity we use the same port)
-   - `<foreign server port>` with generated port, in our case it was <strong>`65237`</strong>
+   - `<iran server port>` with generated port, in our case it was <strong>`<port number>`</strong> (Iran server port could be different but for simplicity we use the same port)
+   - `<foreign server port>` with generated port, in our case it was <strong>`<port number>`</strong>
    - `<user>` with username on foreign server with which we can ssh into foreign server.
    - `<foreign server public ip address>` with public ip address of foreign server.
 
-10. The final command should be something like this: <br /> <code><strong> ssh -4 -f -N -o GatewayPorts=true -L 65237:0.0.0.0:65237 ubuntu@192.168.1.1</code></strong>
+10. The final command should be something like this: <br /> <code><strong> ssh -4 -f -N -o GatewayPorts=true -L <port number>:0.0.0.0:<port number> ubuntu@192.168.1.1</code></strong>
 
 11. Make the <strong><code>tunnel.sh</code></strong> executeable with:<br /> `chmod +x tunnel.sh`
 
