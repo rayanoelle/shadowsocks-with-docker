@@ -43,3 +43,4 @@ you can can also use the command bellow the command bellow:
     - add line below to crontab:<br /><strong> `@reboot ~/tunnel.sh >> ~/tunnel.log 2>&1`</strong>
 
 13. Now connect the client with ip address of iran server with generated port and generated password.
+14. you can use <a href="https://github.com/nojsja/shadowsocks-electron">this link</a> for shadowsocks client.
